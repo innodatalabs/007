@@ -6,9 +6,9 @@ const config = {
 			fallback: '404.html' // for GitHub pages
 
 		}),
-		paths: {
-			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
-		}
+		// paths: {
+		// 	base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
+		// }
 		// router: {
 		// 	type: 'hash',
 		// },
