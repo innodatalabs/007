@@ -18,7 +18,7 @@ const SCHEMA = {
         description: 'Writes text to file',
         schema: z.object({
             name: z.string().describe('File name'),
-            content: z.string().describe('Text content to be written'),
+            contents: z.string().describe('Text content to be written'),
         })
     },
     deleteFile: {
