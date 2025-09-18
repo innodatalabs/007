@@ -1,8 +1,254 @@
-<html>
-    <head>
-        <title>Help</title>
-    </head>
-    <body>
-        <h1>Help</h1>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent 007 Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: #0066cc;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        h2 {
+            color: #0066cc;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eaeaea;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .step-card {
+            background: #f8f9fa;
+            border-left: 4px solid #0066cc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            color: #0066cc;
+            margin-bottom: 1rem;
+        }
+
+        .note {
+            background: #e8f4fd;
+            padding: 1rem;
+            border-left: 4px solid #0066cc;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .warning {
+            background: #fff3e0;
+            padding: 1rem;
+            border-left: 4px solid #ff9800;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        .success {
+            background: #edf7ed;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+            border: 1px solid #4caf50;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            color: #666;
+            border-top: 1px solid #eaeaea;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome to the Agent 007 Documentation</h1>
+            <p>Your guide to setting up and using Agent 007 with Dropbox and OpenAI</p>
+        </header>
+
+        <div class="content">
+            <section>
+                <p>Agent 007 allows you to interact with an LLM that has access to a scoped part of your Dropbox. It can create, read, and list files.</p>
+                <p>You will need both Dropbox and OpenAI accounts to use this service.</p>
+            </section>
+
+            <section>
+                <h2>Preparation</h2>
+                <ul>
+                    <li>Obtain an OpenAI API key</li>
+                    <li>Configure the agent to use your OpenAI API key</li>
+                    <li>Create a new application within your Dropbox and configure it for use with the agent</li>
+                    <li>Configure the agent to use your Dropbox application</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>LLM Configuration</h2>
+                <p>Our goal is to obtain an OpenAI API key and configure the agent to use this key.</p>
+
+                <div class="step-card">
+                    <h3>Steps:</h3>
+                    <ol>
+                        <li>Go to <a href="https://platform.openai.com" target="_blank">platform.openai.com</a> and sign up for an account or log in if you already have one.</li>
+                        <li>In the top-right corner of the dashboard, click on your profile icon or a similar link to navigate to the API section.</li>
+                        <li>If you don't have an existing project, you may need to create a new one first.</li>
+                        <li>On the API Keys page, select the option to "Create new secret key".</li>
+                        <li>Provide a name for your API key.</li>
+                        <li>Copy and secure: A new secret key will be generated. Copy it immediately and store it in a secure, private location.</li>
+                        <li>Go to <a href="/settings" target="_blank">agent settings</a> and paste the key into the API Key field.</li>
+                        <li>Congratulations! Get yourself some coffee.</li>
+                    </ol>
+                </div>
+
+                <div class="note">
+                    <p><strong>Note:</strong> Keep your API key secure and never share it publicly.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Dropbox Configuration</h2>
+                <p>Now we will create an app in your Dropbox account and configure it.</p>
+
+                <div class="step-card">
+                    <h3>Steps:</h3>
+                    <ol>
+                        <li>Go to <a href="https://dropbox.com" target="_blank">dropbox.com</a> and log into your account.</li>
+                        <li>On the left panel, navigate to "More" and "App Center". Alternatively, go directly to <a href="https://dropbox.com/apps" target="_blank">dropbox.com/apps</a>.</li>
+                        <li>In the "Dropbox App Center", click on the "Build an app" link under the "Manage" header in the left column. Alternatively, go directly to <a href="https://dropbox.com/developers" target="_blank">dropbox.com/developers</a>.</li>
+                        <li>Click on the "Create App" button.
+                            <ul>
+                                <li>Choose an API: select "Scoped access".</li>
+                                <li>Choose the type of access you need: select "App folder". <strong>Do not</strong> allow this app to have unlimited access to your full Dropbox!</li>
+                                <li>Name your app. You can choose anything you like, such as "Playground" or "Write assist".</li>
+                                <li>Click the "Create App" button at the bottom of the form.</li>
+                            </ul>
+                            You will be redirected to the app configuration page.
+                        </li>
+                        <li>Now let's configure your new app:
+                            <ul>
+                                <li>In the "OAuth 2" section, enter the following into the "Redirect URIs" field (copy and paste): <code>https://007.innodatalabs.net/auth/callback</code> and click the "Add" button.</li>
+                                <li>Copy the "App key" value and paste it into the Agent configuration "APP_KEY" field.</li>
+                                <li>In the "App secret" section, copy the value and paste it into the Agent configuration "APP_SECRET" field.</li>
+                                <li>Go to the "Permissions" tab (select the tab at the top) and enable the following permissions:
+                                    <ul>
+                                        <li>files.metadata.read</li>
+                                        <li>files.content.write</li>
+                                        <li>files.content.read</li>
+                                    </ul>
+                                    Click "Submit" to persist your changes.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>We're almost there! Return to the <a href="/settings" target="_blank">agent settings</a> page and click the "Connect" button at the bottom. This will connect the agent to your new Dropbox application.</li>
+                    </ol>
+                </div>
+
+                <div class="warning">
+                    <p><strong>Important:</strong> Do not grant unlimited access to your full Dropbox. The app folder access is more secure.</p>
+                </div>
+            </section>
+
+            <div class="success">
+                <p><strong>Perfect! This completes the configuration. Enjoy using Agent 007!</strong></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Agent 007 Documentation &copy; 2025-2099</p>
+        </footer>
+    </div>
+</body>
 </html>
