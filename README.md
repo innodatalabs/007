@@ -6,7 +6,7 @@ This repo is automatically deployed to GitHub pages, hosted at https://007.innod
 
 ## Developing
 
-1. Make sure you have `bun tool installed. See here https://bun.com/get
+1. Make sure you have `bun` tool installed. See here https://bun.com/get
 
 2. Install dependencies
 
