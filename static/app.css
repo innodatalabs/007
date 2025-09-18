@@ -4,8 +4,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    a:link    { color: white; }
-    a:visited { color: white; }
+    a:link    { color: blue; }
+    a:visited { color: green; }
 
 }
 
@@ -444,10 +444,3 @@ ol, ul {
     }
 }
 
-a {
-    color: blue;
-}
-
-a:visited {
-    color: green;   
-}
