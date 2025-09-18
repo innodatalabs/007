@@ -1,11 +1,9 @@
 <script>
     import { llmSettings } from "$lib/llm-store.js";
-    import  { dropbox, dropboxSettings } from '$lib/dbx-store.js';
+    import { dropbox, dropboxSettings } from '$lib/dbx-store.js';
 
     async function dropboxConnect() {
-        const redirectUrl = `${window.location.origin}/auth/callback`;
-        console.log({redirectUrl})
-        const url = await dropbox.authStart(redirectUrl);
+        const url = await dropbox.authStart();
         window.location = url;
     }
 

@@ -1,0 +1,70 @@
+/* Navbar styling with nesting */
+        nav {
+            background: linear-gradient(90deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 0 2rem;
+            height: 70px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            
+            & ul {
+                display: flex;
+                height: 100%;
+                list-style: none;
+                
+                & li {
+                    display: flex;
+                    align-items: center;
+                    
+                    &.logo {
+                        font-weight: 700;
+                        font-size: 1.5rem;
+                        margin-right: auto; /* Push other items to the right */
+                        
+                        & i {
+                            margin-right: 10px;
+                            color: #3498db;
+                        }
+                    }
+                    
+                    & a {
+                        color: white;
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        padding: 0.5rem 1rem;
+                        border-radius: 5px;
+                        transition: all 0.3s ease;
+                        
+                        &:hover {
+                            background-color: rgba(255, 255, 255, 0.1);
+                        }
+                        
+                        & i {
+                            font-size: 1.1rem;
+                        }
+                    }
+                    
+                    &.user {
+                        & .avatar {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 10px;
+                            font-weight: bold;
+                            border: 2px solid rgba(255, 255, 255, 0.3);
+                        }
+                    }
+                }
+            }
+        }
+   

@@ -6,7 +6,7 @@
     const code = urlParams.get('code');
     const redirectUrl = `${window.location.origin}/auth/callback`;
 
-    dropbox.authFinish(redirectUrl, code).then(goto('/'))
+    dropbox.authFinish(code).then(goto('/'))
 </script>
 
 <p>...Redirecting in a moment...</p>

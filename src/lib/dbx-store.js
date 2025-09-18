@@ -14,6 +14,9 @@ refreshToken.subscribe(value => {
     }
 });
 
+// Dropbox OAuth2 redirect url
+export const REDIRECT_URL = `${window.location.origin}/auth/callback`;
+
 // reactive variable, holding Dropbox user display name (if connected)
 export const user = writable();
 
@@ -51,14 +54,14 @@ export const dropbox = (() => {
         }
     });
 
-    async function authStart (redirectUrl) {
+    async function authStart () {
         console.log({params})
-        const auth = new DbxAuth({ appKey: params.appKey, appSecret: params.appSecret, redirectUrl });
+        const auth = new DbxAuth({ appKey: params.appKey, appSecret: params.appSecret, redirectUrl: REDIRECT_URL });
         return await auth.start()
     }
 
-    async function authFinish (redirectUrl, code) {
-        const auth = new DbxAuth({ appKey: params.appKey, appSecret: params.appSecret, redirectUrl });
+    async function authFinish (code) {
+        const auth = new DbxAuth({ appKey: params.appKey, appSecret: params.appSecret, redirectUrl: REDIRECT_URL });
         const token = await auth.finish(code);
         refreshToken.set(token);
         set('connected');
@@ -81,7 +84,7 @@ export const dropbox = (() => {
 })();
 
 
-// reactive varibale holding the list of Dropbox files. Its updated in background as file are being changed by LLM or user
+// reactive variable holding the list of Dropbox files. Its updated in background as file are being changed by LLM or user
 export const files = (() => {
     let currentFiles = [];
     const { subscribe, set, update } = writable(currentFiles);

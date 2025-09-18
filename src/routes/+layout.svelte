@@ -11,13 +11,30 @@
 </svelte:head>
 
 <div class="container">
-<div class="top-bar">
-	<div class="logo" onclick={() => goto("/")} >
-		<i class="fas fa-comment-dots"></i>
-		<span class="logo-text">Agent v0.0.7</span>
-	</div>
-	<a onclick={() => goto("/settings")} aria-role="button" aria-label="settings"><i class="fas fa-cog"></i></a>
-</div>
+<nav>
+	<ul>
+		<li class="logo" onclick={() => goto("/")}>
+			<a href="#">
+				<i class="fas fa-comment-dots"></i>
+				<span>Agent v0.0.7</span>
+			</a>
+		</li>
+		<li>
+			<a href="/help/index.html" target="_blank">
+				<i class="fas fa-question-circle"></i>
+				<span>Help</span>
+			</a>
+		</li>
+		<li>
+			<span>{$user}</span>
+		</li>
+		<li onclick={() => goto("/settings")}>
+			<a href="#">
+				<i class="fas fa-cog"></i>
+			</a>
+		</li>
+	</ul>
+</nav>
 
 {@render children?.()}
 
