@@ -21,3 +21,9 @@ This repo is automatically deployed to GitHub pages, hosted at https://007.innod
    ```
 
 Pushing to `master` branch will automatically build this application and deploy to GitHub pages as https://007.innodatalabs.net
+
+## Using
+
+Read agent documentation at https://007.innodatalabs.net/help/index.html .
+
+Go to the agent page at https://007.innodatalabs.net and start playing!
