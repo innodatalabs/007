@@ -6,7 +6,13 @@ export const dropboxSettings = writable(JSON.parse(localStorage.getItem('dropbox
 dropboxSettings.subscribe(value => localStorage.setItem('dropbox-settings', JSON.stringify(value)));
 
 const refreshToken = writable(localStorage.getItem('dropbox-refresh-token'));
-refreshToken.subscribe(value => localStorage.setItem('dropbox-refresh-token', value));
+refreshToken.subscribe(value => {
+    if (value) {
+        localStorage.setItem('dropbox-refresh-token', value)
+    } else {
+        localStorage.removeItem('dropbox-refresh-token');
+    }
+});
 
 // reactive variable, holding Dropbox user display name (if connected)
 export const user = writable();
