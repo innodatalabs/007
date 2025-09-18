@@ -15,13 +15,13 @@ export class DbxAuth {
     }
 
     async finish (code) {
-        const dbx = new Dropbox({ clientId: this.appKey, clientSecret: this.appSecret })
+        const dbx = new Dropbox({ clientId: this.appKey, clientSecret: this.appSecret });
+        console.log({redirectUrl: this.redirectUrl, code})
         const { result, status } = await dbx.auth.getAccessTokenFromCode(this.redirectUrl, code);
         if (status !== 200) {
             throw new Error(`Authentication failed with ${status}`);
         }
 
-        // await dbx.auth.authTokenRevoke();
         const { refresh_token: refreshToken } = result;
         console.log({refreshToken})
         return refreshToken;
