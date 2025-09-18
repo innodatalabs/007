@@ -41,6 +41,10 @@ export const dropbox = (() => {
                 user.set()
                 set('disconnected');
             });
+        } else if (x.appKey && x.appSecret) {
+            refreshToken.set();
+            user.set()
+            set('disconnected');
         } else {
             user.set()
             set('not-configured');
