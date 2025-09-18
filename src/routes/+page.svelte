@@ -50,6 +50,7 @@
     <p>Please <a href="/settings">go to Settings</a> and</p>
     <ul>
         <li>Set LLM API Key</li>
+        <li>Set Dropbox APP_KEY and APP_SECRET</li>
         <li>Connect your Dropbox</li>
     </ul>
 </div>
