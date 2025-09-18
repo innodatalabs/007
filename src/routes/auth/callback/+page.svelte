@@ -4,8 +4,9 @@
 
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    const redirectUrl = `${window.location.origin}/auth/callback`;
 
-    dropbox.authFinish('http://localhost:5173/auth/callback', code).then(goto('/'))
+    dropbox.authFinish(redirectUrl, code).then(goto('/'))
 </script>
 
 <p>...Redirecting in a moment...</p>
