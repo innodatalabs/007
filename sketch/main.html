@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="logo">
+                <i class="fas fa-comment-dots"></i>
+                <span class="logo-text">ChatApp</span>
+            </div>
+            <a href="settings.html" class="settings">
+                <i class="fas fa-cog"></i>
+            </a>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Chat Panel -->
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>Global Chat Room</h2>
+                </div>
+                
+                <div class="chat-messages">
+                    <div class="timestamp">Today, 10:30 AM</div>
+                    
+                    <div class="message received">
+                        <div class="message-sender">Sarah Johnson</div>
+                        <div class="message-content">Hello everyone! How's everyone doing today?</div>
+                        <div class="message-time">10:30 AM</div>
+                    </div>
+                    
+                    <div class="message sent">
+                        <div class="message-sender">You</div>
+                        <div class="message-content">Hi Sarah! I'm doing great, thanks for asking. How about you?</div>
+                        <div class="message-time">10:31 AM</div>
+                    </div>
+                    
+                    <div class="message received">
+                        <div class="message-sender">Mike Chen</div>
+                        <div class="message-content">I'm good too. Just finished the project we were discussing yesterday.</div>
+                        <div class="message-time">10:32 AM</div>
+                    </div>
+                    
+                    <div class="message received">
+                        <div class="message-sender">Emma Wilson</div>
+                        <div class="message-content">That's awesome Mike! Can you share the results with the team?</div>
+                        <div class="message-time">10:33 AM</div>
+                    </div>
+                    
+                    <div class="message sent">
+                        <div class="message-sender">You</div>
+                        <div class="message-content">Yes, please share when you get a chance. I'd love to see what you've accomplished!</div>
+                        <div class="message-time">10:34 AM</div>
+                    </div>
+                    
+                    <div class="timestamp">Now</div>
+                    
+                    <div class="message received">
+                        <div class="message-sender">Mike Chen</div>
+                        <div class="message-content">Sure thing! I'll send the files in just a moment. There are some interesting findings I think you'll all appreciate.</div>
+                        <div class="message-time">10:35 AM</div>
+                    </div>
+                </div>
+                
+                <div class="chat-input">
+                    <input type="text" placeholder="Type your message here...">
+                    <button><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+            
+            <!-- Debug Panel -->
+            <div class="debug-panel">
+                <div class="debug-header">
+                    <div class="debug-title">Debug Information</div>
+                    <button class="debug-clear">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="debug-content">
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:30:45 AM</div>
+                        <div class="debug-message">User "Sarah Johnson" joined the chat</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:31:12 AM</div>
+                        <div class="debug-message">Message sent to server: "Hi Sarah! I'm doing great..."</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:31:15 AM</div>
+                        <div class="debug-message">Server response: Message received successfully</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:32:03 AM</div>
+                        <div class="debug-message">User "Mike Chen" is typing...</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:32:07 AM</div>
+                        <div class="debug-message">Message received from "Mike Chen"</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:33:22 AM</div>
+                        <div class="debug-message">User "Emma Wilson" reacted to a message</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:34:51 AM</div>
+                        <div class="debug-message">Message sent to server: "Yes, please share when..."</div>
+                    </div>
+                    <div class="debug-entry">
+                        <div class="debug-timestamp">10:35:17 AM</div>
+                        <div class="debug-message">Connection quality: Excellent (ping: 42ms)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

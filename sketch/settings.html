@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Chat Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="logo">
+                <i class="fas fa-comment-dots"></i>
+                <span class="logo-text">ChatApp Settings</span>
+            </div>
+            <a href="main.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        
+        <!-- Settings Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-item active">
+                    <i class="fas fa-brain"></i>
+                    <span class="sidebar-text">AI Model</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-user"></i>
+                    <span class="sidebar-text">Profile</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-palette"></i>
+                    <span class="sidebar-text">Appearance</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="sidebar-text">Privacy</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="sidebar-text">About</span>
+                </div>
+            </div>
+            
+            <!-- Main Settings Content -->
+            <div class="settings-content">
+                <h1 class="settings-header">AI Model Configuration</h1>
+                
+                <div class="form-group">
+                    <label class="form-label" for="model-select">Select Language Model</label>
+                    <select class="form-select" id="model-select">
+                        <option value="gpt-4">GPT-4</option>
+                        <option value="gpt-3.5">GPT-3.5 Turbo</option>
+                        <option value="claude-2">Claude 2</option>
+                        <option value="llama-2">Llama 2</option>
+                        <option value="palm-2">PaLM 2</option>
+                        <option value="custom">Custom Model</option>
+                    </select>
+                    <div class="form-help">Choose the language model you want to use for conversations</div>
+                    
+                    <div class="model-features">
+                        <h3>GPT-4 Features</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Advanced reasoning capabilities</li>
+                            <li><i class="fas fa-check"></i> Broader general knowledge</li>
+                            <li><i class="fas fa-check"></i> Better problem-solving skills</li>
+                            <li><i class="fas fa-check"></i> Supports longer context (up to 32k tokens)</li>
+                            <li><i class="fas fa-check"></i> More creative responses</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="api-key">API Key</label>
+                    <div class="api-key-container">
+                        <input type="password" class="form-input" id="api-key" placeholder="Enter your API key">
+                        <span class="toggle-visibility" id="toggle-visibility">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    <div class="form-help">
+                        Your API key is stored locally and never sent to our servers. 
+                        <a href="#" style="color: #6c63ff;">Get your API key</a>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="api-endpoint">API Endpoint (Optional)</label>
+                    <input type="text" class="form-input" id="api-endpoint" placeholder="https://api.example.com/v1/chat">
+                    <div class="form-help">Leave blank to use the default endpoint for the selected model</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Response Style</label>
+                    <div style="display: flex; gap: 20px;">
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="radio" name="response-style" checked>
+                            <span>Balanced</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="radio" name="response-style">
+                            <span>Creative</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px;">
+                            <input type="radio" name="response-style">
+                            <span>Precise</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="settings-actions">
+                    <button class="btn btn-primary">Save Settings</button>
+                    <button class="btn btn-secondary">Test Connection</button>
+                    <button class="btn btn-secondary">Reset to Defaults</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle API key visibility
+        document.getElementById('toggle-visibility').addEventListener('click', function() {
+            const apiKeyInput = document.getElementById('api-key');
+            const icon = this.querySelector('i');
+            
+            if (apiKeyInput.type === 'password') {
+                apiKeyInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                apiKeyInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Model selection change
+        document.getElementById('model-select').addEventListener('change', function() {
+            // In a real application, you would update the features based on the selected model
+            const featuresTitle = document.querySelector('.model-features h3');
+            featuresTitle.textContent = this.options[this.selectedIndex].text + ' Features';
+        });
+    </script>
+</body>
+</html>
