@@ -7,8 +7,14 @@ import { MemorySaver } from '@langchain/langgraph-checkpoint';
 export class Agent {
     constructor (llmSettings, dbx) {
         console.log('Creating agent with options:', llmSettings);
+        let options = { ... llmSettings }
+        const baseURL = options.endpoint;
+        delete options.endpoint;
+        if (baseURL) {
+            options = {...options, configuration: { baseURL }};
+        }
 
-        const llm = new ChatOpenAI(llmSettings);
+        const llm = new ChatOpenAI(options);
         this.agent = createReactAgent({
             llm,
             tools: tools(dbx),

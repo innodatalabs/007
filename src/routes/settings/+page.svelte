@@ -45,7 +45,7 @@
 
     <div class="form-group">
         <label class="form-label" for="api-endpoint">API Endpoint (Optional)</label>
-        <input type="text" class="form-input" id="api-endpoint" placeholder="https://api.example.com/v1/chat">
+        <input type="text" class="form-input" id="api-endpoint" placeholder="https://api.example.com/v1/chat" bind:value={$llmSettings.endpoint}>
         <div class="form-help">Leave blank to use the default endpoint for the selected model</div>
     </div>
 
