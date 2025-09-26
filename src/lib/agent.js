@@ -1,20 +1,38 @@
 import { tools } from "./tools.js";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { ChatOpenAI } from "@langchain/openai";
+import { ChatAnthropic } from "@langchain/anthropic";
 import { MemorySaver } from '@langchain/langgraph-checkpoint';
 
 
-export class Agent {
-    constructor (llmSettings, dbx) {
-        console.log('Creating agent with options:', llmSettings);
-        let options = { ... llmSettings }
-        const baseURL = options.endpoint;
-        delete options.endpoint;
+function createLlm(selection, options) {
+    if (selection === 'openai') {
+        let llmOptions = { ... options }
+        const baseURL = llmOptions.endpoint;
+        delete llmOptions.endpoint;
         if (baseURL) {
-            options = {...options, configuration: { baseURL }};
+            llmOptions = {...llmOptions, configuration: { baseURL }};
         }
 
-        const llm = new ChatOpenAI(options);
+        return new ChatOpenAI(llmOptions);
+    } else if (selection === 'anthropic') {
+        let llmOptions = { ... options }
+        const baseURL = llmOptions.endpoint;
+        delete llmOptions.endpoint;
+        if (baseURL) {
+            llmOptions = {...llmOptions, clientOptions: { baseURL }};
+        }
+        return new ChatAnthropic(llmOptions);
+    } else {
+        throw new Error(`Unsupported LLM selection: ${selection}`);
+    }
+}
+
+export class Agent {
+    constructor (llmSelection, llmSettings, dbx) {
+        console.log('Creating agent with options:', {llmSelection, llmSettings});
+        const llm = createLlm(llmSelection, llmSettings);
+
         this.agent = createReactAgent({
             llm,
             tools: tools(dbx),
