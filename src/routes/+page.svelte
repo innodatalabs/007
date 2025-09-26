@@ -1,10 +1,10 @@
 <script>
     import { agent } from "$lib/agent-store.js"
     import { dropbox, dropboxSettings, files } from '$lib/dbx-store.js';
-    import { llmSettings } from "$lib/llm-store.js";
     import { conversation, debugMessages } from '$lib/ui-store.js';
     import { marked } from "marked";
 
+    $: console.log({agent: $agent})
 
     let userMessage = "";
 
@@ -49,7 +49,7 @@
 <div>
     <p>Please <a href="/settings">go to Settings</a> and</p>
     <ul>
-        <li>Set LLM API Key</li>
+        <li>Select LLM engine and provide API Key</li>
         <li>Set Dropbox APP_KEY and APP_SECRET</li>
         <li>Connect your Dropbox</li>
     </ul>

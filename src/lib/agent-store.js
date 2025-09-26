@@ -1,16 +1,20 @@
 import { derived } from 'svelte/store';
-import { llmSettings } from './llm-store.js';
+import { llmSettings, llmSelection } from './llm-store.js';
 import { dropbox } from './dbx-store.js';
 import { Agent } from './agent.js';
 
 
 // reactive variable that hold initialized agent if LLM is configured and Dropbox is connected. Else is null.
-export const agent = derived([llmSettings, dropbox], ([settings, box]) => {
+export const agent = derived([llmSelection, llmSettings, dropbox], ([selection, settings, box]) => {
+    console.log(selection, settings)
     if (box !== 'connected') {
         return;
     }
-    if (!settings.apiKey) {
+    if (!settings[selection]?.apiKey) {
+        console.log('No API key for selected LLM, cannot create agent', selection);
         return;
     }
-    return new Agent(settings, dropbox.dbx());
+
+    console.log('All good - settings agent up');
+    return new Agent(selection, settings[selection], dropbox.dbx());
 });

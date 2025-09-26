@@ -1,5 +1,5 @@
 <script>
-    import { llmSettings } from "$lib/llm-store.js";
+    import { llmSettings, llmSelection } from "$lib/llm-store.js";
     import { dropbox, dropboxSettings } from '$lib/dbx-store.js';
 
     async function dropboxConnect() {
@@ -17,15 +17,28 @@
     <h1 class="settings-header">Settings</h1>
 
     <div class="form-group">
+        <label class="form-label" for="llm-selection">Select LLM engine</label>
+        <select class="form-input" id="llm-selection" bind:value={$llmSelection}>
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+            <!-- <option value="azure">Azure OpenAI</option>
+            <option value="cohere">Cohere</option> -->
+        </select>
+        <div class="form-help">Choose which LLM provider to use for agent</div>
+    </div>
+
+
+
+    <div class="form-group">
         <label class="form-label" for="model-select">Model</label>
-        <input type="text" class="form-input" id="model-select" placeholder="Enter model name (e.g., gpt-4, gpt-3.5-turbo)" bind:value={$llmSettings.model}>
+        <input type="text" class="form-input" id="model-select" placeholder="Enter model name (e.g., gpt-4, gpt-3.5-turbo)" bind:value={$llmSettings[$llmSelection].model}>
         <div class="form-help">Choose the language model you want to use for conversations</div>
     </div>
 
     <div class="form-group">
         <label class="form-label" for="api-key">API Key</label>
         <div class="api-key-container">
-            <input type="password" class="form-input" id="api-key" placeholder="Enter your API key" bind:value={$llmSettings.apiKey}>
+            <input type="password" class="form-input" id="api-key" placeholder="Enter your API key" bind:value={$llmSettings[$llmSelection].apiKey}>
             <span class="toggle-visibility" id="toggle-visibility">
                 <i class="fas fa-eye"></i>
             </span>
@@ -37,7 +50,7 @@
 
     <div class="form-group">
         <label class="form-label" for="prompt">Prompt</label>
-        <textarea type="text" class="form-input" id="prompt" placeholder="Your prompt here" bind:value={$llmSettings.prompt}>
+        <textarea type="text" class="form-input" id="prompt" placeholder="Your prompt here" bind:value={$llmSettings[$llmSelection].prompt}>
 
         </textarea>
         <div class="form-help">Detailed prompt</div>
@@ -45,7 +58,7 @@
 
     <div class="form-group">
         <label class="form-label" for="api-endpoint">API Endpoint (Optional)</label>
-        <input type="text" class="form-input" id="api-endpoint" placeholder="https://api.example.com/v1/chat" bind:value={$llmSettings.endpoint}>
+        <input type="text" class="form-input" id="api-endpoint" placeholder="https://api.example.com/v1/chat" bind:value={$llmSettings[$llmSelection].endpoint}>
         <div class="form-help">Leave blank to use the default endpoint for the selected model</div>
     </div>
 
