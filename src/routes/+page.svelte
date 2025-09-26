@@ -4,8 +4,6 @@
     import { conversation, debugMessages } from '$lib/ui-store.js';
     import { marked } from "marked";
 
-    $: console.log({agent: $agent})
-
     let userMessage = "";
 
     async function interact() {

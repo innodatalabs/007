@@ -11,10 +11,8 @@ export const agent = derived([llmSelection, llmSettings, dropbox], ([selection, 
         return;
     }
     if (!settings[selection]?.apiKey) {
-        console.log('No API key for selected LLM, cannot create agent', selection);
         return;
     }
 
-    console.log('All good - settings agent up');
     return new Agent(selection, settings[selection], dropbox.dbx());
 });
