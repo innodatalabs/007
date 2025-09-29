@@ -5,6 +5,7 @@ const SCHEMA = {
     listFiles: {
         name: 'listFiles',
         description: 'Returns array of file names',
+        schema: z.object({}),
     },
     readFile: {
         name: 'readFile',
